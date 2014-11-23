@@ -17,11 +17,9 @@ class Deals(DeclarativeBase):
 
   id             = Column(Integer, primary_key=True)
   title          = Column("title", String)
-  description    = Column("description", String, nullable=True)
   link           = Column("link", String, nullable=True)
-  location       = Column("location", String, nullable=True)
-  category       = Column("category", String, nullable=True)
-  original_price = Column("original_price", String, nullable=True)
+  seller         = Column("seller", String, nullable=True)
+  availability    = Column("availability", String, nullable=True)
   price          = Column("price", String, nullable=True)
 
 

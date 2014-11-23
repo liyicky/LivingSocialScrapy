@@ -11,13 +11,11 @@ class LivingSocialSpider(BaseSpider):
   allowed_domains = ["livingsocial.com"]
   start_urls      = ["http://www.livingsocial.com/cities/231-nyc-downtown"]
   deals_list_xpath = "//li[@dealid]"
-  item_fields      = {"title"         : ".//a/div[@class='deal-bottom']/h3[@itemprop]/text()",
+  item_fields      = {"title"         : ".//span/meta[@itemprop='name']/@content",
                       "link"          : ".//a/@href",
-                      "description"   : ".//a/div[@class='deal-bottom']/p/text()",
-                      "category"      : ".//a/div[@class='deal-top']/div[@class='deal-category']/span/text()",
-                      "location"      : ".//a/div[@class='deal-top']/ul[@class='unstyled deal-info']/li/text()",
-                      "original_price": ".//a/div[@class='deal-bottom']/ul[@class='unstyled deal-info']/li/text()",
-                      "price"         : ".//a/div[@class='deal-bottom']/ul[@class='unstyled deal-info']/li[@class='deal-price']/text()"}
+                      "seller"        : ".//span/meta[@itemprop='seller']/@content",
+                      "availability"   : ".//span/meta[@itemprop='availabilityEnds']/@content",
+                      "price"         : ".//span/meta[@itemprop='price']/@content"}
 
   def parse(self, response):
     selector = HtmlXPathSelector(response)
